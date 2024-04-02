@@ -49,7 +49,7 @@ func (c *Produto) SetQuantidade(quantidade int) {
 	c.quantidade = quantidade
 }
 
-func CriaProdutos(nome string, descricao string, preco float64, qtd int) {
+func Create(nome string, descricao string, preco float64, qtd int) {
 	db := db.ConectaBanco()
 	query, err := db.Prepare("insert into produtos (nome, descricao, preco, quantidade) values ($1, $2, $3, $4)")
 
@@ -62,7 +62,7 @@ func CriaProdutos(nome string, descricao string, preco float64, qtd int) {
 	defer db.Close()
 }
 
-func ListaProdutos() []Produto {
+func List() []Produto {
 	db := db.ConectaBanco()
 	query, err := db.Query("select * from produtos")
 

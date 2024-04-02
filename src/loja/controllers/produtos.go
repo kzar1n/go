@@ -10,7 +10,7 @@ import (
 var temp = template.Must(template.ParseGlob("templates/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "Index", models.ListaProdutos())
+	temp.ExecuteTemplate(w, "Index", models.List())
 }
 
 func New(w http.ResponseWriter, r *http.Request) {
@@ -34,7 +34,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 
-		models.CriaProdutos(nome, descricao, preco, quantidade)
+		models.Create(nome, descricao, preco, quantidade)
 	}
 	http.Redirect(w, r, "/", 301)
 }
