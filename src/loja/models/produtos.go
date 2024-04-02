@@ -9,6 +9,10 @@ type Produto struct {
 	quantidade      int
 }
 
+func (c *Produto) GetId() int {
+	return c.id
+}
+
 func (c *Produto) GetNome() string {
 	return c.nome
 }
@@ -23,6 +27,10 @@ func (c *Produto) GetPreco() float64 {
 
 func (c *Produto) GetQuantidade() int {
 	return c.quantidade
+}
+
+func (c *Produto) SetId(id int) {
+	c.id = id
 }
 
 func (c *Produto) SetNome(nome string) {
@@ -76,6 +84,7 @@ func ListaProdutos() []Produto {
 			panic(err.Error())
 		}
 
+		p.SetId(id)
 		p.SetNome(nome)
 		p.SetDescricao(descricao)
 		p.SetPreco(preco)
@@ -86,5 +95,19 @@ func ListaProdutos() []Produto {
 
 	defer db.Close()
 	return produtos
+
+}
+
+func Remove(id int) {
+	db := db.ConectaBanco()
+	query, err := db.Prepare("delete from produtos where id = $1")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	query.Exec(id)
+
+	defer db.Close()
 
 }
