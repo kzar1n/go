@@ -58,7 +58,6 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	temp.ExecuteTemplate(w, "Edit", append([]models.Produto{}, models.GetProduto(id)))
-
 }
 
 func Update(w http.ResponseWriter, r *http.Request) {

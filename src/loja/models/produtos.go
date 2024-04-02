@@ -64,7 +64,7 @@ func Create(nome string, descricao string, preco float64, qtd int) {
 
 func List() []Produto {
 	db := db.ConectaBanco()
-	query, err := db.Query("select * from produtos")
+	query, err := db.Query("select * from produtos order by id asc")
 
 	if err != nil {
 		panic(err.Error())
