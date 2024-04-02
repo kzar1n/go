@@ -1,0 +1,4 @@
+http://www.google.com.br
+http://www.bing.com.br
+http://www.globo.com.br
+http://www.alura.com.br
