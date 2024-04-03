@@ -1,24 +1,14 @@
 package models
 
 type Pagamento struct {
-	Id          string  `json:"id"`
-	Data        string  `json:"data"`
-	Tipo        string  `json:"tipo"`
-	Valor       float64 `json:"valor"`
-	IdPagador   string
-	Pagador     Pessoa `json:"pagador" gorm:"foreignKey:IdPessoa;references:IdPagador"`
-	IdRecebedor string
-	Recebedor   Pessoa `json:"recebedor" gorm:"foreignKey:IdPessoa;references:IdRecebedor"`
-}
-
-var Pagamentos []Pagamento
-
-func (c *Pagamento) Create(id string, data string, tipo string, valor float64, pagador Pessoa, recebedor Pessoa) *Pagamento {
-	c.Id = id
-	c.Data = data
-	c.Tipo = tipo
-	c.Valor = valor
-	c.Pagador = pagador
-	c.Recebedor = recebedor
-	return c
+	Id               string  `json:"id"`
+	Data             string  `json:"data"`
+	Tipo             string  `json:"tipo"`
+	Valor            float64 `json:"valor"`
+	IdPagador        string  `json:"id_pagador"`
+	IdContaPagador   string  `json:"id_conta_pagador"`
+	IdRecebedor      string  `json:"id_recebedor"`
+	BancoRecebedor   string  `json:"banco_recebedor"`
+	AgenciaRecebedor string  `json:"agencia_recebedor"`
+	ContaRecebedor   string  `json:"conta_recebedor"`
 }
