@@ -1,0 +1,2 @@
+create database minhas_autorizacoes;
+use minhas_autorizacoes;
